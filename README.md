@@ -9,12 +9,12 @@ Inspired by 1976 snake video game, Blockade and 1991 Rattler Race created by Chr
 - JS, HTML/CSS
 
 ### Getting Started 
+Use the arrow keys or the numeric keypad to movew the snake's head, try to eat all of the apples to advance to the next level 
 
 ### Next Steps
 
 ### Wireframe 
 
 <a href="https://www.figma.com/file/k1247DzM2dWvngDV5vOdt4/RattlerRace?node-id=0%3A1" target="_blank">Rattler Race Wireframe</a>
-[go](https://www.figma.com/file/k1247DzM2dWvngDV5vOdt4/RattlerRace?node-id=0%3A1){:target="_blank" rel="noopener"}
 
 ### Pseudocode
