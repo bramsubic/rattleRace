@@ -13,7 +13,7 @@ Use the arrow keys or the numeric keypad to movew the snake's head, try to eat a
 
 ### Next Steps
 - track high scores 
-- 
+- add apples worth more points 
 
 ### Wireframe 
 
@@ -21,6 +21,31 @@ Use the arrow keys or the numeric keypad to movew the snake's head, try to eat a
 
 ### Pseudocode 
 
+- when snake collides with apple it gets 1 point and a new apple appears on the board at a random position 
+
+- declare some variables: 
+- the timer 
+- the game score
+- the start position of the snake 
+	- direction of the snake 
+	- speed of the snake 
+	- array containing the coordinates of the snakes body 
+	- length of the snake 
+- posiiton of the apple 
+
+- initialize the board 
+- initialize the snake array and use a for loop to add the eaten apples to the snakes body 
+
+- I need a function that updates the position of the snake thats based on its direction and also checks if the snake has collided with an apple if true update the score, add the eaten apple to the snakes body and place a new apple in a random position on the board 
+
+- use some key codes as an event handler to control the snakes direction 
+- check what key has been pressed and then assign it to the direction of the snake 
+
+
+
+ 
+ 
+ 
 1) Define required constants
  1.1) define the size of the game board grid as well as an array of positions 
  1.2) snake's position on board
