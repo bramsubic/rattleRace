@@ -13,6 +13,7 @@ Inspired by 1976 snake video game, Blockade and 1991 Rattler Race created by Chr
 ### Next Steps
 
 ### Wireframe 
-[wireframe](https://www.figma.com/file/k1247DzM2dWvngDV5vOdt4/RattlerRace?node-id=0%3A1)
+
+<a href="https://www.figma.com/file/k1247DzM2dWvngDV5vOdt4/RattlerRace?node-id=0%3A1" target="_blank">Rattler Race Wirefram</a>
 
 ### Pseudocode
