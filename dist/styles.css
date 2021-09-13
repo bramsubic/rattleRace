@@ -10,16 +10,71 @@
     margin: 0 auto;
     padding: 0;
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+body, html {
+    height: 100%;
+}
+
+.bg {
+    background-image: url('/img/Background.png') ;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.game-board {
+    border: 2px solid var(--main-color);
+    position: relative;
+    top: 100px;
 }
 
 header {
     background-color: var(--second-color);
+    color: var(--fifth-color);
+    text-align: center;
+    padding: 10px 0px;
 }
 
 .top-nav {
     background-color: var(--fifth-color);
+    border: 2px solid var(--main-color);
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    padding: 10px 0px;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+a span {
+    text-decoration: underline;
 }
 
 .bottom-nav {
     background-color: var(--third-color);
+    padding: 10px 0px;
+}
+
+#score {
+    background-color: var(--fifth-color);
+    width: 94px;
+    height: 18px;
+    border: 2px solid var(--main-color);
+    padding: 5px 0px 0px 5px;
+}
+
+@media only screen and (min-width: 900px) {
+    .game-board {
+        border: 2px solid var(--main-color);
+        width: 50%;
+        height: 600px;
+    } 
 }
