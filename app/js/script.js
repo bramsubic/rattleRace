@@ -3,21 +3,67 @@
 
 /*----- app's state (variables) -----*/
 // score, speed, snakeBody, snakePosition, apple, applePosition 
+let score = 0 
+let speed; 
+let snakeBody; 
+let snakePosition; 
+let apple; 
+let board; 
+
 
 /*----- cached element references -----*/
 //select the board, score, and the start and restart button 
+let gameBoardEl = document.getElementById('gameboard'); 
+let scoreEl = document.getElementById('score');
+let startEl = document.getElementById('start')
+let restartEl = document.getElementById('restart')
 
 /*----- event listeners -----*/
 // keycodes so when the key is pressed the direction changes (function executes)
+// listen for a click to start the game and restart the game 
+// listen for a click to change the direction of the snake 
 
 /*----- functions -----*/
+// initialize the board 
+function init() {
+     board = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+    ]
+    drawGrid()
+}
+
+// draw snake grid  
+function drawGrid() {
+    board.forEach((row, rId) => {
+        let rowEl = document.createElement('div')
+        rowEl.classList.add('row')
+        row.forEach((square, sId) => {
+            let squareEl = document.createElement('div')
+            squareEl.classList.add('square')
+            rowEl.appendChild(squareEl)
+        })
+        gameBoardEl.appendChild(rowEl)
+    })
+}
+
 // keycode function 
+// set a variable to deal with the direction of the snake
+// setInterval to execute a function 
+
+// move snake in directions 
 
 // start game and restart game 
 
 // randomly generate an apple 
 // make sure it doesnt appear where the snake is 
-Math.floor(Math.random() *)
+// Math.floor(Math.random() * max)
 
 // snake outcomes 
 
@@ -36,4 +82,5 @@ Math.floor(Math.random() *)
 
     // what happens to the snake 
 // loses all of the apples from the tail 
-// direction of the snake restarts 
+// direction of the snake restarts
+init()
