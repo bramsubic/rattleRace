@@ -1,7 +1,7 @@
 # rattlerRace
 
 ### Description 
-Inspired by 1976 snake video game, Blockade and 1991 Rattler Race created by Christopher Lee Fraley. Its a fast moving game in which, you, a snake try to eat all of the apples, but the more you eat the more you grow so try not to eat yourself.  
+Inspired by 1991 Rattler Race created by Christopher Lee Fraley. Its a fast paced game in which, you try to eat all of the apples before the time is up.  
 
 ### ScreenShots
 
@@ -9,11 +9,13 @@ Inspired by 1976 snake video game, Blockade and 1991 Rattler Race created by Chr
 - JS, HTML/CSS
 
 ### Getting Started 
-Use the arrow keys or the numeric keypad to movew the snake's head, try to eat all of the apples to advance to the next level 
+Use the arrow keys or the buttons on the screen to move the snake, try to eat all 10 of the apples before the time is up to win!
 
 ### Next Steps
-- track high scores 
-- add apples worth more points 
+- get the snake to move on it's own 
+- get the snake to grow every time it eats an apple
+- randomly position new apples on the board
+- set boundaries for the snakes move outcomes
 
 ### Wireframe 
 
@@ -21,9 +23,7 @@ Use the arrow keys or the numeric keypad to movew the snake's head, try to eat a
 
 ### Pseudocode 
 
-- when snake collides with apple it gets 1 point and a new apple appears on the board at a random position 
-
-- declare some variables: 
+- declare variables
 - the timer 
 - the game score
 - the start position of the snake 
@@ -31,46 +31,32 @@ Use the arrow keys or the numeric keypad to movew the snake's head, try to eat a
 	- speed of the snake 
 	- array containing the coordinates of the snakes body 
 	- length of the snake 
-- posiiton of the apple 
+- posiiton of the apple
+- board 
 
-- initialize the board 
-- initialize the snake array and use a for loop to add the eaten apples to the snakes body 
+- drawBoard 
+- use an array to create a grid of 10 rows and 10 squares
+- iterate through the board, and create 10 rows for each row create a class of divs
+- iterate through the rows, and create 10 squares    
 
-- I need a function that updates the position of the snake thats based on its direction and also checks if the snake has collided with an apple if true update the score, add the eaten apple to the snakes body and place a new apple in a random position on the board 
+- play 
+- will start the timer 
+- position the 
+- snakeOutcomes 
+- when snake collides with apple it gets 1 point and a new apple appears on the board at a random position 
+- if snake hits any of the four corners game is over 
+- if snake hits itself game is over  
 
-- use some key codes as an event handler to control the snakes direction 
-- check what key has been pressed and then assign it to the direction of the snake 
+- applePosition 
+- randomly place the apple on the board 
+- check to see if a snake is not positioned in that index 
 
+- render
+- this function will update the board constantly to move the snake 
+- check to see if the snake hasn't collided with anything 
+- check to see if the snake has eated an apple 
+- add a new apple 
 
-
- 
- 
- 
-1) Define required constants
- 1.1) define the size of the game board grid as well as an array of positions 
- 1.2) snake's position on board
- 1.3) apple's poition on board
-
-2) Define required variables used to track the state of the game
- 2.1) timer 
- 2.2) lives: 3
- 2.3) score: 1 point for each apple
- 2.4) newgame 
-
-3) Store elements on the page that will be accessed in code more than once in variables to make code more concise, readable and performant.
-  3.1) 
-
-4) Upon loading the app should:
-	4.1) Initialize the state variables
-	4.2) Render those values to the page
-	4.3) Wait for the user to click to start game and use keycodes to change the direction of the   snake 
-
-5) Handle a player clicking the space bar to start the game
-  5.1) timer starts counting down 
-  5.2) snake position 
-  5.3) snake eats apple 
-    5.3a) increase the length of the snake and randomly position a new apple on board 
-    5.3b) if snake eats itself, take away a life and check to see how many lives are left
-    5.3c) if player hits the edges just bounce off?? 
-
-6) Handle a player clicking the new game 
+- keycodes 
+- add some event listeners on the keys to move the snake in different directions 
+- check what key has been pressed and then change the direction and index of the snake 
