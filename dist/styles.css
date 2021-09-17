@@ -5,18 +5,16 @@
     --fourth-color: #5cc531;
     --fifth-color: #ffffff;
 }
-
 *  {
     margin: 0 auto;
     padding: 0;
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
     font-size: 15px;
 }
-
 body, html {
     height: 100%;
+    overscroll-behavior: none;
 }
-
 .bg {
     background-image: url('/img/Background.png') ;
     height: 100%;
@@ -24,49 +22,79 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 .board {
-    border: 2px solid var(--fifth-color);
+    border: 2px solid var(--main-color);
     position: relative;
     top: 100px;
-    height: 600px;
+    height: 100%;
+    box-shadow: 0px 0px 30px 1px var(--second-color);
 }
-
 header {
     background-color: var(--second-color);
     color: var(--fifth-color);
     text-align: center;
     padding: 10px 0px;
 }
-
 .top-nav {
     background-color: var(--fifth-color);
     border: 2px solid var(--main-color);
+    position: relative;
 }
-
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:  rgb(195,195,195,0.9);
+  z-index: 2;
+  cursor: pointer;
+}
+#text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--main-color);
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+#text > p {
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+}
 ul {
-    display: flex;
     list-style: none;
-    padding: 10px 0px;
+    padding: 10px 10px; 
 }
-
 a:link, a:visited, a:hover, a:active {
     text-decoration: none;
     color: var(--main-color);
 }
-
 a span {
     text-decoration: underline;
 }
-
 .bottom-nav {
     background-color: var(--third-color);
     padding: 10px 0px;
     position: relative;
     height: 70px;
 }
-
-#score {
+.bottom-nav > button {
+  position: absolute;
+  left: 7px;
+  top: 20px;
+  padding: 5px 5px;
+  border: 2px solid var(--main-color);
+}
+.bottom-nav > button:active {
+  transform: scale(0.97);
+  box-shadow: 3px 2px 22px 1px var(--second-color);
+}
+.scoreDisplay {
     background-color: var(--fifth-color);
     width: 94px;
     height: 18px;
@@ -77,25 +105,48 @@ a span {
     right: 0px;
     bottom: 0px;
 }
-
-#gameboard {
-    height: 400px;
+#timer {
+   position: absolute;
+   top: 60px;
+   right: 10px;
+   color: var(--fourth-color);
+   text-shadow: 1px 1px 2px var(--main-color);
+   font-size: 20px;
+}
+.grid {
+    height: 100%;
     background-color: var(--main-color);
 }
 .square {
     height: 50px;
     width: 50px;
-    border: 2px solid green;
+    text-align: center;
+    font-size: 30px;
 }
 .row {
     display: flex;
-    
 }
-
+.snake::before {
+ content: "🐍"; 
+}
+.apple::before {
+  content: "🍎";
+}
+#keycodes {
+  position: absolute
+}
+#keycodes > div {
+  position: relative;
+  bottom: 425px;
+  left: 5px;
+}
 @media only screen and (min-width: 900px) {
     .board {
-        border: 2px solid var(--fifth-color);
+        border: 2px solid var(--main-color);
         width: 50%;
         height: 600px;
     } 
 }
+
+
+

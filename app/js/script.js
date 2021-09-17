@@ -1,86 +1,196 @@
-/*----- constants -----*/
-// gameBoard array 
+let board;
+let currentIndex = 0;
+let appleIndex;
+let currentSnake;
+let score;
+let speed = 0.8;
+let sec = 10;
+let time;
 
-/*----- app's state (variables) -----*/
-// score, speed, snakeBody, snakePosition, apple, applePosition 
-let score = 0 
-let speed; 
-let snakeBody; 
-let snakePosition; 
-let apple; 
-let board; 
+let gameBoardEl = document.querySelector(".grid");
+let playAgain = document.querySelector(".playAgain");
+let scoreDisplay = document.querySelector(".scoreDisplay");
+let left = document.querySelector(".left");
+let down = document.querySelector(".down")
+let right = document.querySelector(".right");
+let up = document.querySelector(".up");
 
+let helpEl = document.getElementById("help")
+let overlayEl = document.getElementById("overlay")
 
-/*----- cached element references -----*/
-//select the board, score, and the start and restart button 
-let gameBoardEl = document.getElementById('gameboard'); 
-let scoreEl = document.getElementById('score');
-let startEl = document.getElementById('start')
-let restartEl = document.getElementById('restart')
+function on() {
+  overlayEl.style.display = "block";
+}
+on()
 
-/*----- event listeners -----*/
-// keycodes so when the key is pressed the direction changes (function executes)
-// listen for a click to start the game and restart the game 
-// listen for a click to change the direction of the snake 
+function off() {
+  overlayEl.style.display = "none";
+}
+off()
 
-/*----- functions -----*/
-// initialize the board 
 function init() {
      board = [
+        [1, 0, 0, 0, 0, 0, 0, 0, -1, 0],
+        [0, 0, 0, 0, 0, 0, 0, -1, 0, 0],    
+        [0, -1, 0, 0, 0, 0, 0, 0, -1, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        [0, 0, 0, 0, 0, -1, 0, 0, 0, 0], 
+        [-1, 0, 0, 0, 0, 0, 0, -1, 0, 0],
+        [0, -1, 0, 0, 0, 0, 0, 0, 0, 0], 
+        [0, 0, 0, 0, -1, 0, 0, 0, 0, -1],
     ]
     drawGrid()
-}
+    render()
+}   
 
-// draw snake grid  
+document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("keydown", control);
+      playAgain.addEventListener("click", replay);
+      helpEl.addEventListener("click", on);
+      overlayEl.addEventListener("click", off);
+});
+
 function drawGrid() {
     board.forEach((row, rId) => {
-        let rowEl = document.createElement('div')
-        rowEl.classList.add('row')
-        row.forEach((square, sId) => {
-            let squareEl = document.createElement('div')
-            squareEl.classList.add('square')
-            rowEl.appendChild(squareEl)
+        let rowEl = document.createElement('div')   
+        rowEl.classList.add('row')                                       
+        row.forEach((square, sId) => {                              
+            let squareEl = document.createElement('div')   
+            squareEl.classList.add('square')         
+           squareEl.id =`s-${rId}-${sId}`              
+            rowEl.appendChild(squareEl)                  
         })
-        gameBoardEl.appendChild(rowEl)
+        gameBoardEl.appendChild(rowEl)             
     })
 }
 
-// keycode function 
-// set a variable to deal with the direction of the snake
-// setInterval to execute a function 
+function render() {
+    board.forEach((row, rId) => {
+        row.forEach((square, sId) => {
+            if  (square === 0) { 
+            document.getElementById(`s-${rId}-${sId}`).classList.remove("snake")
+            } else if  (square > 0) { 
+            document.getElementById(`s-${rId}-${sId}`).classList.add("snake")
+            } else if (square < 0) {
+            document.getElementById(`s-${rId}-${sId}`).classList.add("apple")
+            }
+        })
+    }) 
+}
 
-// move snake in directions 
+function startGame() {
+  let squares = document.querySelectorAll(".grid div");
+  score = 0
+  scoreDisplay.innerHTML = score;
+  currentSnake =  {r: 0, s: 0}
+  currentApple = {r: 5, s:7}
+  currentIndex = 0;
+  document.getElementById(`s-${currentSnake.r}-${currentSnake.s}`).classList.add("snake");
+  document.getElementById(`s-${currentApple.r}-${currentApple.s}`).classList.add("apple");
+}
 
-// start game and restart game 
+function win() {
+    if (score == 10) {
+      alert("You've Win, You've Collected All of the Snakes!")
+  }
+}
 
-// randomly generate an apple 
-// make sure it doesnt appear where the snake is 
-// Math.floor(Math.random() * max)
+right.addEventListener("click", moveRight);
+left.addEventListener("click", moveLeft);
+up.addEventListener("click", moveUp);
+down.addEventListener("click", moveDown);
 
-// snake outcomes 
+function moveRight(squares) {        
+    board[currentSnake.r][currentSnake.s] = 0
+    currentSnake.s += 1
+    eatApple()
+    board[currentSnake.r][currentSnake.s] = 1
+    render() 
+    win()
+}
 
-    // if snake eats apple 
-        // attach apple to snake body 
-        // score will increase by 1 
-        // display score on dom 
-        
-    // else snake hitting self 
-    // else snake hitting border  top, right, bottom, left 
+function moveLeft(squares) {
+  board[currentSnake.r][currentSnake.s] = 0
+  currentSnake.s -= 1
+  eatApple()
+  board[currentSnake.r][currentSnake.s] = 1
+  render()
+  win()
+}
 
-// what happens if snake hits anything other than an apple? 
-    // interval ends and score goes back to 0 
-    // snake loses all of the apples 
-    // direction of the snake restarts 
+function moveDown() {
+  board[currentSnake.r][currentSnake.s] = 0
+  currentSnake.r += 1
+  eatApple()
+  board[currentSnake.r][currentSnake.s] = 1
+  render()
+  win()
+}
 
-    // what happens to the snake 
-// loses all of the apples from the tail 
-// direction of the snake restarts
+function moveUp() {
+  board[currentSnake.r][currentSnake.s] = 0
+  currentSnake.r -= 1
+  eatApple()
+  board[currentSnake.r][currentSnake.s] = 1
+  render()
+  win()
+}
+
+function control(e) {
+  if (e.keyCode == '39') {
+    board[currentSnake.r][currentSnake.s] = 0
+    currentSnake.s += 1
+    eatApple()
+    board[currentSnake.r][currentSnake.s] = 1
+    render() 
+    win()
+  } else if (e.keyCode == '38') {
+    board[currentSnake.r][currentSnake.s] = 0
+    currentSnake.r -= 1
+    eatApple()
+    board[currentSnake.r][currentSnake.s] = 1
+    render()
+    win()
+  } else if (e.keyCode == '37') {
+    board[currentSnake.r][currentSnake.s] = 0
+    currentSnake.s -= 1
+    eatApple()
+    board[currentSnake.r][currentSnake.s] = 1
+    render()
+    win()
+  } else if (e.keyCode == '40') {
+    board[currentSnake.r][currentSnake.s] = 0
+    currentSnake.r += 1
+    eatApple()
+    board[currentSnake.r][currentSnake.s] = 1
+    render()
+    win()
+  }
+}
+
+function eatApple(squares) {
+  if ((board[currentSnake.r][currentSnake.s]) == -1) {
+    document.getElementById(`s-${currentSnake.r}-${currentSnake.s}`).classList.remove("apple")
+    score++;
+    scoreDisplay.textContent = score;
+  }
+}
+
+// time = setInterval(myTimer, 1000);
+// function myTimer() {
+//     document.getElementById('timer').innerHTML = sec + "s";
+//     sec--;
+//     if (sec == -1) {
+//         clearInterval(time);
+//         alert("You Lose");
+//     } 
+// }
+
+function replay() {
+  gameBoardEl.innerHTML = "";
+  drawGrid()
+  startGame()
+  render()
+}
+
 init()
