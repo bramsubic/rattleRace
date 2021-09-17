@@ -179,15 +179,15 @@ function eatApple(squares) {
   }
 }
 
-time = setInterval(myTimer, 1000);
-function myTimer() {
-    document.getElementById('timer').innerHTML = sec + "s";
-    sec--;
-    if (sec == -1) {
-        clearInterval(time);
-        winMsg.innerText = "You Lose!";
-    } 
-}
+// time = setInterval(myTimer, 1000);
+// function myTimer() {
+//     document.getElementById('timer').innerHTML = sec + "s";
+//     sec--;
+//     if (sec == -1) {
+//         clearInterval(time);
+//         winMsg.innerText = "You Lose!";
+//     } 
+// }
 
 function replay() {
   gameBoardEl.innerHTML = "";
