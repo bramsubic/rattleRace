@@ -2,7 +2,7 @@
 
 ### Description 
 Inspired by 1991 Rattler Race created by Christopher Lee Fraley. Its a fast paced game in which, you try to eat all of the apples before the time is up.  
-[play] https://bramsubic.github.io/rattlerRace/
+<a href="https://bramsubic.github.io/rattlerRace/" target="_blank">Play</a>
 
 ### ScreenShots
 
