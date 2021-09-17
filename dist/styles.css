@@ -4,6 +4,7 @@
     --third-color: #c3c3c3;
     --fourth-color: #5cc531;
     --fifth-color: #ffffff;
+    --sixth-color: #db3436;
 }
 *  {
     margin: 0 auto;
@@ -27,7 +28,7 @@ body, html {
     color: var(--fourth-color);
 }
 #losemsg {
-   color: red;
+   color: var(--sixth-color);
 }
 .msg {
     text-align: center;
