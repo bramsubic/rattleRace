@@ -18,7 +18,7 @@ body, html {
     background-color: var(--main-color);
 }
 .bg {
-    background-image: url('.../img/Background.png') ;
+    background-image: url('img/Background.png') ;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
