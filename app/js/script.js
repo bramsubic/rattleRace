@@ -10,6 +10,8 @@ let time;
 let gameBoardEl = document.querySelector(".grid");
 let playAgain = document.querySelector(".playAgain");
 let scoreDisplay = document.querySelector(".scoreDisplay");
+let winMsg = document.getElementById('winmsg');
+let loseMsg = document.getElementById('losemsg');
 let left = document.querySelector(".left");
 let down = document.querySelector(".down")
 let right = document.querySelector(".right");
@@ -82,6 +84,7 @@ function startGame() {
   let squares = document.querySelectorAll(".grid div");
   score = 0
   scoreDisplay.innerHTML = score;
+  sec = 10
   currentSnake =  {r: 0, s: 0}
   currentApple = {r: 5, s:7}
   currentIndex = 0;
@@ -91,7 +94,7 @@ function startGame() {
 
 function win() {
     if (score == 10) {
-      alert("You've Win, You've Collected All of the Snakes!")
+      winMsg.innerText = "You Win!"
   }
 }
 
@@ -176,18 +179,20 @@ function eatApple(squares) {
   }
 }
 
-// time = setInterval(myTimer, 1000);
-// function myTimer() {
-//     document.getElementById('timer').innerHTML = sec + "s";
-//     sec--;
-//     if (sec == -1) {
-//         clearInterval(time);
-//         alert("You Lose");
-//     } 
-// }
+time = setInterval(myTimer, 1000);
+function myTimer() {
+    document.getElementById('timer').innerHTML = sec + "s";
+    sec--;
+    if (sec == -1) {
+        clearInterval(time);
+        winMsg.innerText = "You Lose!";
+    } 
+}
 
 function replay() {
   gameBoardEl.innerHTML = "";
+  winMsg.innerText = "";
+  loseMsg.innerText = "";
   drawGrid()
   startGame()
   render()

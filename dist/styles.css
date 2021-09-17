@@ -13,7 +13,8 @@
 }
 body, html {
     height: 100%;
-    overscroll-behavior: none;
+    overscroll-behavior: none;    
+    background-color: var(--main-color);
 }
 .bg {
     background-image: url('/img/Background.png') ;
@@ -22,8 +23,22 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+#winmsg {
+    color: var(--fourth-color);
+}
+#losemsg {
+   color: red;
+}
+.msg {
+    text-align: center;
+    font-size: 60px;
+    padding-top: 20px;
+    margin-bottom: -60px;
+    text-shadow: 1px 1px 2px var(--main-color);
+}
 .board {
     border: 2px solid var(--main-color);
+    background-color: var(--main-color);
     position: relative;
     top: 100px;
     height: 100%;
