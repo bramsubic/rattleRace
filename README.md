@@ -5,6 +5,8 @@ Inspired by 1991 Rattler Race created by Christopher Lee Fraley. Its a fast pace
 
 ### ScreenShots
 
+[![screenshot1](https://i.imgur.com/GrxR1h9.png))](https://imgur.com/GrxR1h9)
+
 ### Technologies Used
 - JS, HTML/CSS
 
